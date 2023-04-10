@@ -1,0 +1,1 @@
+cd "d:\Programming\C\Basics\" ; ($?) { gcc Testing4.c -o Testing4 } ; ($?) { .\Testing4 } 

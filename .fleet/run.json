@@ -1,0 +1,9 @@
+{
+    "configurations": [
+        {
+            "name": "Run my script",
+            "type": "command",
+            "program": "$USER_HOME$/script.sh",
+        }
+    ]
+}

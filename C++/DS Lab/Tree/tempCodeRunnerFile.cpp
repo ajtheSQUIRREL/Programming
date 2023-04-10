@@ -1,0 +1,3 @@
+      chk += tree[index];
+        chk += ' ';
+    

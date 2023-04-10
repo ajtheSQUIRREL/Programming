@@ -1,0 +1,1 @@
+sine += ((pow(x, z)) / fact(z));
