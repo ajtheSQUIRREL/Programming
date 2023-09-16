@@ -78,13 +78,24 @@ int main()
     }
     priorityScheduling(processes, n);
 
+    float avgTAT = 0;
+    float avgWT = 0;
+
     cout << "Process\tArrival\tBurst\tCompletion\tTurnaround\tWaiting\tResponse\tPriority\n";
     for (int i = 0; i < n; ++i)
     {
         cout << processes[i].id << "\t" << processes[i].arrivalTime << "\t" << bt[i] << "\t"
              << processes[i].completionTime << "\t\t" << processes[i].turnaroundTime << "\t\t"
              << processes[i].waitingTime << "\t" << processes[i].responseTime << "\t" << processes[i].priority << "\n";
+        avgTAT += processes[i].turnaroundTime;
+        avgWT += processes[i].waitingTime;
     }
+
+    avgTAT /= n;
+    avgWT /= n;
+    cout << endl;
+    cout << "Average Turnaround Time: " << avgTAT << endl;
+    cout << "Average Waiting Time: " << avgWT << endl;
 
     return 0;
 }

@@ -89,17 +89,18 @@ int main()
     priorityPreemptiveScheduling(processes, n);
 
     double totalWaitingTime = 0;
-
+    float avgTAT = 0;
     cout << "Process\tArrival\tBurst\tCompletion\tTurnaround\tWaiting\tResponse\tPriority\n";
     for (int i = 0; i < n; ++i)
     {
         totalWaitingTime += processes[i].waitingTime;
+        avgTAT += processes[i].turnaroundTime;
         cout << processes[i].id << "\t" << processes[i].arrivalTime << "\t" << bt[i] << "\t"
              << processes[i].completionTime << "\t\t" << processes[i].turnaroundTime << "\t\t"
              << processes[i].waitingTime << "\t" << processes[i].responseTime << "\t" << processes[i].priority << "\n";
     }
 
     cout << "Average Waiting Time: " << totalWaitingTime / n << endl;
-
+    cout << "Averrage Turn Around Time: " << avgTAT / n << endl;
     return 0;
 }

@@ -81,12 +81,22 @@ int main()
     sjfPreemptiveScheduling(processes, n);
 
     cout << "Process\tArrival\tBurst\tCompletion\tTurnaround\tWaiting\tResponse\n";
+    float avgTAT = 0;
+    float avgWT = 0;
+
     for (int i = 0; i < n; ++i)
     {
         cout << processes[i].id << "\t" << processes[i].arrivalTime << "\t" << processes[i].burstTime << "\t"
              << processes[i].completionTime << "\t\t" << processes[i].turnaroundTime << "\t\t"
              << processes[i].waitingTime << "\t" << processes[i].responseTime << "\n";
+        avgTAT += processes[i].turnaroundTime;
+        avgWT += processes[i].waitingTime;
     }
 
+    avgTAT /= n;
+    avgWT /= n;
+    cout << endl;
+    cout << "Average Turnaround Time: " << avgTAT << endl;
+    cout << "Average Waiting Time: " << avgWT << endl;
     return 0;
 }

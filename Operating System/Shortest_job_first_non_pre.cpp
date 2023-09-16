@@ -21,15 +21,15 @@ void sjfScheduling(Process processes[], int n)
     while (completed < n)
     {
         int shortestJobIndex = -1;
-        int shortestJobBurst = MAX;
+        int shortestJobfirst = MAX;
 
         for (int i = 0; i < n; ++i)
         {
             if (processes[i].arrivalTime <= currentTime && processes[i].burstTime > 0)
             {
-                if (processes[i].burstTime < shortestJobBurst)
+                if (processes[i].burstTime < shortestJobfirst)
                 {
-                    shortestJobBurst = processes[i].burstTime;
+                    shortestJobfirst = processes[i].burstTime;
                     shortestJobIndex = i;
                 }
             }
@@ -76,12 +76,21 @@ int main()
     sjfScheduling(processes, n);
 
     cout << "Process\tArrival\tBurst\tCompletion\tTurnaround\tWaiting\tResponse\n";
+    float avgTAT = 0;
+    float avgWT = 0;
     for (int i = 0; i < n; ++i)
     {
         cout << processes[i].id << "\t" << processes[i].arrivalTime << "\t" << bt[i] << "\t"
              << processes[i].completionTime << "\t\t" << processes[i].turnaroundTime << "\t\t"
              << processes[i].waitingTime << "\t" << processes[i].responseTime << "\n";
+        avgTAT += processes[i].turnaroundTime;
+        avgWT += processes[i].waitingTime;
     }
 
+    avgTAT /= n;
+    avgWT /= n;
+    cout << endl;
+    cout << "Average Turnaround Time: " << avgTAT << endl;
+    cout << "Average Waiting Time: " << avgWT << endl;
     return 0;
 }
