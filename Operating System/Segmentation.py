@@ -15,5 +15,7 @@ s = int(input("     Enter Segment No. : "))
 b = int(input("     Enter Byte No. : "))
 if 0 < b <= seg_table[s][1]:
     print(f"The Physical Address Is : {seg_table[s][0]+b}")
+elif s > seg:
+    print("Invalid Segment.")
 else:
     print("It's a Trap.")
