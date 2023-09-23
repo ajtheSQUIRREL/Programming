@@ -1,0 +1,41 @@
+.MODEL SMALL
+.STACK 100H
+.DATA
+NUM DB ? 
+RES DB ?
+REM DB ?
+.CODE
+MAIN PROC
+    XOR CX,CX
+    MOV CX,10
+    MOV BL,10
+    MOV AL,0
+    ADDITION:
+       ADD AL,BL
+       DEC BL
+       LOOP ADDITION 
+    
+    MOV NUM,AL
+    MOV AL,00
+    MOV AH,00
+
+    MOV AL,NUM
+    MOV BL,10
+    DIV BL
+    MOV RES,AL
+    MOV REM,AH
+    
+    MOV DL,RES
+    ADD DL,48
+    MOV AH,02H
+    INT 21H
+    
+    MOV DL,REM
+    ADD DL,48
+    MOV AH,02H
+    INT 21H
+    
+    MAIN ENDP
+END MAIN           
+
+
