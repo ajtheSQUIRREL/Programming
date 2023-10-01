@@ -20,13 +20,15 @@ main proc
     mov ah,0
     mov dl,0
     
-    mov dl,10
+
     mov bl,0
     
     xor cx,cx
     mov cx,2
     print "ENTER N : "
     
+    ;Two digit input
+    mov dl,10
     mov ah,1h
     int 21h
     sub al,48
@@ -84,7 +86,8 @@ main proc
     
     
     exit:
-    print "Final output is : " 
+    print "Final output is : "
+    ;Two digit output 
     mov al,00
     mov ah,00
    
